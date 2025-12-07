@@ -1,0 +1,74 @@
+agent:
+  name: Sudarshan Chakra
+  id: chakra_v2_001
+  description: >
+    An advanced reasoning-driven AI agent with modular architecture,
+    featuring pre-execution validation, memory-based learning, and
+    sophisticated tool orchestration for complex problem-solving.
+
+strategy:
+  planning_mode: exploratory     # [conservative, exploratory]
+  exploration_mode: parallel      # [parallel, sequential] - only relevant if planning_mode = exploratory
+  memory_fallback_enabled: true  # Use memory when tools fail
+  max_steps: 10                   # Maximum execution steps per session
+  max_lifelines_per_step: 2       # Retry attempts per failed step
+
+memory:
+  memory_service: true
+  summarize_tool_results: true    # Store summarized execution results
+  tag_interactions: true          # Tag sessions with LLM-generated tags
+  storage:
+    base_dir: "storage/session_logs"  # Base directory for session storage
+    structure: "date"              # Date-based directory structure: YYYY/MM/DD
+
+llm:
+  text_generation: gemini          # Options: gemini, phi4, gemma3:12b, qwen2.5:32b-instruct-q4_0
+  embedding: nomic                 # Embedding model for future RAG enhancements
+
+persona:
+  tone: concise                    # Communication style
+  verbosity: low                   # Output detail level
+  behavior_tags: [rational, focused, tool-using, analytical]
+
+# Agent-specific configurations
+agents:
+  retriever:
+    top_k: 3                       # Number of memory results to retrieve
+    min_score: 0.3                 # Minimum relevance score threshold
+    cache_enabled: true            # Enable in-memory caching
+    
+  perception:
+    confidence_threshold: 0.7      # Minimum confidence to proceed
+    max_entities: 10               # Maximum entities to extract
+    
+  critic:
+    strict_mode: false             # Enable stricter validation rules
+    pre_validation: true           # Validate plans before execution
+    post_validation: true          # Validate results after execution
+    syntax_check: true             # Check Python syntax in plans
+    
+  decision:
+    aggressive_chaining: true      # Chain multiple operations in single steps
+    parallel_threshold: 2          # Minimum tools for parallel execution
+    
+  executor:
+    max_functions: 5               # Maximum function calls per step
+    timeout_per_function: 500      # Timeout in milliseconds per function
+    sandbox_mode: true             # Execute in sandboxed environment
+    
+  memory:
+    auto_save: true                # Automatically save sessions
+    compression: false             # Compress stored sessions
+
+# Workflow engine configurations
+workflow:
+  max_transitions: 100             # Maximum state transitions per session
+  timeout_per_state: 300           # Timeout in seconds per state
+  enable_logging: true             # Log state transitions
+  
+# Coordinator configurations  
+coordinator:
+  retry_on_failure: true           # Retry failed agent calls
+  max_retries: 2                   # Maximum retry attempts
+  parallel_agents: false           # Enable parallel agent execution (future)
+

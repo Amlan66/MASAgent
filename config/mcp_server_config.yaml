@@ -1,0 +1,50 @@
+mcp_servers:
+  - id: math
+    script: mcp_server_1.py
+    cwd: C:/TSAI EAG 2/Session 10/sudarshan_chakra_agent/mcp_servers
+    description: "Mathematical operations and special functions including factorial, trigonometry, string-int conversions, fibonacci, and more"
+    capabilities: 
+      - add
+      - subtract
+      - multiply
+      - divide
+      - power
+      - cbrt
+      - factorial
+      - remainder
+      - sin
+      - cos
+      - tan
+      - mine
+      - create_thumbnail
+      - strings_to_chars_to_int
+      - int_list_to_exponential_sum
+      - fibonacci_numbers
+      
+  - id: documents
+    script: mcp_server_2.py
+    cwd: C:/TSAI EAG 2/Session 10/sudarshan_chakra_agent/mcp_servers
+    description: "Document processing: search stored documents with RAG, convert webpages to markdown, extract PDF content"
+    capabilities:
+      - search_stored_documents_rag
+      - convert_webpage_url_into_markdown
+      - extract_pdf
+      
+  - id: websearch
+    script: mcp_server_3.py
+    cwd: C:/TSAI EAG 2/Session 10/sudarshan_chakra_agent/mcp_servers
+    description: "Web search and content retrieval: DuckDuckGo search, raw HTML download from URLs"
+    capabilities:
+      - duckduckgo_search_results
+      - download_raw_html_from_url
+      
+  - id: mixed
+    script: mcp_server_4.py
+    cwd: C:/TSAI EAG 2/Session 10/sudarshan_chakra_agent/mcp_servers
+    description: "Additional mathematical tools and mixed utilities"
+    capabilities:
+      - add
+      - subtract
+      - multiply
+      - divide
+
