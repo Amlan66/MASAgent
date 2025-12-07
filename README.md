@@ -62,7 +62,7 @@ All agents inherit from the `BaseAgent` abstract class, providing:
 - `_build_query_prompt()`: Constructs LLM prompts
 - `_parse_llm_output()`: Parses structured LLM responses
 
-### 4. Critic Agent (`agents/critic_agent.py`) ⭐ **NEW**
+### 4. Critic Agent (`agents/critic_agent.py`)
 
 **Purpose**: Validates queries, plans, and results before and after execution
 
@@ -212,7 +212,7 @@ VALIDATE_QUERY (critic)
    - **Agent**: DecisionAgent (INITIAL_PLAN or REPLAN mode)
    - **Next**: VALIDATE_PLAN
 
-6. **VALIDATE_PLAN**: Validate plan before execution ⭐ **NEW**
+6. **VALIDATE_PLAN**: Validate plan before execution 
    - **Agent**: CriticAgent (PLAN_VALIDATION mode)
    - **Next**:
      - EXECUTE_STEP (if plan approved)
