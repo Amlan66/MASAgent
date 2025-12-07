@@ -152,7 +152,7 @@ All agents inherit from the `BaseAgent` abstract class, providing:
 
 ### State Machine Overview
 
-The Workflow Engine (`orchestrator/workflow_engine.py`) implements a state machine that replaces traditional while-loop control flow with explicit state handlers. Each state represents a distinct phase of query processing.
+The Workflow Engine (`orchestrator/workflow_engine.py`) implements a state machine that controls flow with explicit state handlers. Each state represents a distinct phase of query processing.
 
 ### Workflow States
 
