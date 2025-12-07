@@ -159,27 +159,27 @@ The Workflow Engine (`orchestrator/workflow_engine.py`) implements a state machi
 ```
 INIT
   ↓
-RETRIEVE (search memory)
+RETRIEVE (search memory, retriever agent)
   ↓
-ANALYZE_QUERY (perception)
+ANALYZE_QUERY (perception agent)
   ↓
-VALIDATE_QUERY (critic)
+VALIDATE_QUERY (critic agent)
   ↓
   ├→ If answer in memory → COMPLETE
-  └→ If need planning → PLAN
+  └→ If need planning → PLAN (decision agent)
        ↓
-     VALIDATE_PLAN (critic)
+     VALIDATE_PLAN (criti agent)
        ↓
-       ├→ If rejected → PLAN (retry)
-       └→ If approved → EXECUTE_STEP
+       ├→ If rejected → PLAN (retry) (decision agent)
+       └→ If approved → EXECUTE_STEP (executor agent)
             ↓
-          ANALYZE_RESULT (perception)
+          ANALYZE_RESULT (perception agent)
             ↓
-          VALIDATE_RESULT (critic)
+          VALIDATE_RESULT (critic agent)
             ↓
             ├→ If goal achieved → COMPLETE
-            ├→ If step ok → DECIDE_NEXT
-            └→ If step failed → PLAN (replan)
+            ├→ If step ok → DECIDE_NEXT (executor agent)
+            └→ If step failed → PLAN (replan) (decision agent)
 ```
 
 
